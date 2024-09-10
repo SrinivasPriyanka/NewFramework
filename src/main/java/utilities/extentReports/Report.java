@@ -19,7 +19,7 @@ public class Report implements IReporter {
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites,
                                String outputDirectory) {
 
-            outputDirectory = "src/main/java/Reports";
+            outputDirectory = "src/main/java/reports";
 
         extent = new ExtentReports(outputDirectory + File.separator
                 + "report.html", true);
