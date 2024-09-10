@@ -19,18 +19,10 @@ public class Report implements IReporter {
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites,
                                String outputDirectory) {
 
-        String  jobName = System.getProperty("jobName");
-
-        String  buildNumber = System.getProperty("buildNumber");
-
-        if(jobName == null )
-            outputDirectory = "C:/JancyReport";
-
-        else
-            outputDirectory = "C:/JenkinsTestExecution/"+jobName+"/"+buildNumber;
+            outputDirectory = "src/main/java/Reports";
 
         extent = new ExtentReports(outputDirectory + File.separator
-                + "report.html", false);
+                + "report.html", true);
 
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> result = suite.getResults();
