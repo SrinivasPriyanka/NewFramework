@@ -4,44 +4,44 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import resource.staticResource.Global_Static;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class base {
-    WebDriver driver;
-    Properties prop;
+public class Base {
+
+
  public void loadProperties() throws IOException {
      FileInputStream file = new FileInputStream("C:\\NewFramework\\new_framework\\src\\main\\java\\config\\config.properties");
-     prop = new Properties();
-     prop.load(file);
+     Global_Static.prop = new Properties();
+     Global_Static.prop.load(file);
 
  }
 
  public void openSpecificBrowser(String browserName){
      if (browserName.equals("Chrome")||browserName.equals("chrome"))
-          driver = new ChromeDriver();
+          Global_Static.d = new ChromeDriver();
      if (browserName.equals("Firefox")||browserName.equals("firefox"))
-         driver = new FirefoxDriver();
+         Global_Static.d = new FirefoxDriver();
      if (browserName.equals("Edge")||browserName.equals("edge"))
-         driver = new EdgeDriver();
+         Global_Static.d = new EdgeDriver();
 
 
  }
 
  public void launchBrowser() throws IOException {
 loadProperties();
-String br = prop.getProperty("browser");
+String br = Global_Static.prop.getProperty("browser");
      System.out.println(br);
 openSpecificBrowser(br);
-driver.get("https://www.facebook.com/login.php/");
-driver.manage().window().maximize();
+Global_Static.d .get("https://www.facebook.com/login.php/");
+Global_Static.d.manage().window().maximize();
  }
 
     public static void main(String[] args) throws IOException {
-        base b = new base();
+        Base b = new Base();
         b.launchBrowser();
 
     }
